@@ -1,0 +1,11 @@
+{
+  "codeowners": ["@jagheterfredrik"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/jagheterfredrik/nordpool2",
+  "domain": "nordpool2",
+  "name": "nordpool2",
+  "requirements": ["pytz==2022.7"],
+  "iot_class": "cloud_polling",
+  "version": "0.0.1"
+}

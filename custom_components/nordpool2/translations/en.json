@@ -1,0 +1,15 @@
+{
+  "config": {
+    "title": "Nordpool",
+    "step": {
+      "user": {
+        "title": "Nordpool Sensor",
+        "description": "Setup a Nordpool sensor",
+        "data": {
+          "region": "Region",
+          "currency": "Currency"
+        }
+      }
+    }
+  }
+}
