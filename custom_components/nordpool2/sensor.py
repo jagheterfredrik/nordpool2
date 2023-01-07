@@ -158,7 +158,7 @@ class NordpoolSensor(Entity):
                                 "value": float(col["Value"].replace(" ", "").replace(",", ".")) / 10,
                                 "end": stockholm_midnight + timedelta(hours=i+1, days=1),
                             })
-        except Exception as e:
+        except Exception as err:
             _LOGGER.exception(f"Nordpool data fetch failed {err=}, {type(err)=}")
 
         self.today, self.tomorrow = today, tomorrow
