@@ -7,5 +7,5 @@
   "name": "nordpool2",
   "requirements": ["pytz==2022.7"],
   "iot_class": "cloud_polling",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
