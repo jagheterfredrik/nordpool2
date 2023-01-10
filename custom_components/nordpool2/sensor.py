@@ -121,7 +121,7 @@ class NordpoolSensor(Entity):
 
     @staticmethod
     def stockholm_now() -> datetime:
-        return datetime.utcnow().astimezone(pytz.timezone('Europe/Stockholm'))
+        return datetime.now().astimezone(pytz.timezone('Europe/Stockholm'))
 
     async def async_fetch_nordpool_data(self, *args, **kwargs) -> None:
         _LOGGER.debug("Fetching Nordpool data")
