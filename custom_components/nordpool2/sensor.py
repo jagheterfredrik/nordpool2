@@ -14,7 +14,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.event import async_track_point_in_utc_time, async_track_time_change
+from homeassistant.helpers.event import async_call_later, async_track_point_in_utc_time, async_track_time_change
 from homeassistant.helpers.typing import (
     ConfigType,
     DiscoveryInfoType,
@@ -161,15 +161,15 @@ class NordpoolSensor(Entity):
         except Exception as err:
             _LOGGER.exception(f"Nordpool data fetch failed {err=}, {type(err)=}")
 
-        self.today, self.tomorrow = today, tomorrow
-        if self.today:
+        if today:
+            self.today, self.tomorrow = today, tomorrow
             self._available = True
             self.update_state()
             self.schedule_nordpool_data_fetch()
         else:
             # If something failed, try again in five minutes
             _LOGGER.info("Resceduling data fetch because today's data was False")
-            self.async_call_later(self.hass, self.async_fetch_nordpool_data, timedelta(minutes=5))
+            async_call_later(self.hass, self.async_fetch_nordpool_data, timedelta(minutes=5))
 
     def format_hourly_array(self, arr) -> list:
         return [
