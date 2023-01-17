@@ -169,7 +169,7 @@ class NordpoolSensor(Entity):
         else:
             # If something failed, try again in five minutes
             _LOGGER.info("Resceduling data fetch because today's data was False")
-            async_call_later(self.hass, self.async_fetch_nordpool_data, timedelta(minutes=5))
+            async_call_later(self.hass, timedelta(minutes=5), self.async_fetch_nordpool_data)
 
     def format_hourly_array(self, arr) -> list:
         return [
